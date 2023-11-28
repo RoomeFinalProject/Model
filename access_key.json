@@ -1,0 +1,5 @@
+{
+    "OPENAI_API_KEY":"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",
+    "PINECONE_KEY":"899bdd13-39f7-49bb-9d38-978ab5dad8bd",
+    "PINECONE_ENV":"gcp-starter"
+}
