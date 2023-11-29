@@ -30,5 +30,5 @@ def my_chatbot(prompt):
 
 if __name__ == "__main__":
     # This block will be executed only if the script is run as the main program
-    my_chatbot('하반기 파생 결합증권 시장 동향에 대해 100글자로 요약해줘')
+    my_chatbot('하반기 파생 결합증권 시장 동향에 대해 100글자로 요약해줘 ') 
     
