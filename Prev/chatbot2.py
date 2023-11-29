@@ -1,13 +1,18 @@
 import os
 import pinecone
 from access import get_openai_key, get_pinecone_key, get_pinecone_env
-from llama_index import VectorStoreIndex
+from llama_index import (
+    VectorStoreIndex,
+    SimpleKeywordTableIndex,
+    SimpleDirectoryReader,
+    LLMPredictor,
+    ServiceContext,
+)
 from llama_index.vector_stores import PineconeVectorStore
 # llamaindex 또한 3.5 turbo가 default
 
 def my_chatbot(prompt):
     
-    #key값 불러오기
     os.environ["OPENAI_API_KEY"] = get_openai_key()
     os.environ["PINECONE_API_KEY"] = get_pinecone_key()
     os.environ["PINECONE_ENV"] = get_pinecone_env()
@@ -19,13 +24,14 @@ def my_chatbot(prompt):
     pinecone_index = pinecone.Index("openai")
     vector_store = PineconeVectorStore(pinecone_index=pinecone_index)
     index = VectorStoreIndex.from_vector_store(vector_store)
+    #query_engine = index.as_query_engine()
     query_engine_chat = index.as_chat_engine()
-    response_chat = query_engine_chat.chat(prompt)
-    # query_engine = index.as_query_engine()
-    # response_query = query_engine.query()
+
+    # response_query = query_engine.query() # 속도가 너무 느리다
+    
+    response_chat = query_engine_chat.chat(prompt) # 속도가 너무 느리다
     # print('query',str(response_query))
     # print('chat',str(response_chat))
-
     return print(str(response_chat))
 
 if __name__ == "__main__":
