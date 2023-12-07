@@ -14,12 +14,15 @@ def my_chatbot(prompt):
     index_name = "openai"
     environment = get_pinecone_env()
     pinecone.init(api_key = get_pinecone_key(), environment = get_pinecone_env())
+    print("1. pinecone 생성")
 
     # Pinecone DB에 Index를 연결
     pinecone_index = pinecone.Index("openai")
+    print("2. pinecone 인덱스")
     vector_store = PineconeVectorStore(pinecone_index=pinecone_index)
     index = VectorStoreIndex.from_vector_store(vector_store)
     query_engine_chat = index.as_chat_engine()
+    print("3. pinecone 쿼리엔진생성")
     response_chat = query_engine_chat.chat(prompt)
     # query_engine = index.as_query_engine()
     # response_query = query_engine.query()
@@ -30,5 +33,5 @@ def my_chatbot(prompt):
 
 if __name__ == "__main__":
     # This block will be executed only if the script is run as the main program
-    my_chatbot('하반기 파생 결합증권 시장 동향에 대해 100글자로 요약해줘 ') 
+    my_chatbot('하반기 파생 결합증권 시장 동향에 대해 100글자로 요약해줘')
     

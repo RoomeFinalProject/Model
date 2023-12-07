@@ -13,7 +13,7 @@ import queue as q # 자료구조 큐, 요청을 차곡차곡 쌓아서 하나씩
 import urllib.request as req
 import numpy as np
 import uvicorn
-from chatbot import my_chatbot
+from chatbot_1 import my_chatbot
 
 
 ###02. 객체, 답변 생성 ------------------------------------------------------------------------------------------------------
@@ -216,7 +216,7 @@ def responseai_per_request(parameter, response_queue, filename, domain):
     elif '@que' in user_question:
         # 답변을 저장하고 있는 로그파일 초기화
         init_res_log( filename )
-        # 질문에서 @que 제외 => 프럼프트 구성
+        # 질문에서 @qa 제외 => 프럼프트 구성
         prompt = user_question.replace('@que', '').strip()
         # GPT에게 질의 -> 질의결과로 블락(응답 지연후 발생) -> 응답
         gpt_answer = get_qa_by_GPT( prompt )
