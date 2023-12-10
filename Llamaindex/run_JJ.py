@@ -13,8 +13,7 @@ import queue as q # 자료구조 큐, 요청을 차곡차곡 쌓아서 하나씩
 import urllib.request as req
 import numpy as np
 import uvicorn
-from QueryingandPrompt import query_engine
-from chatbot import my_chatbot
+from chatbot_1 import my_chatbot
 
 
 ###02. 객체, 답변 생성 ------------------------------------------------------------------------------------------------------

@@ -3,7 +3,7 @@ from access import get_openai_key, get_pinecone_key, get_pinecone_env
 
 import pinecone
 
-from llama_index import VectorStoreIndex
+from llama_index import VectorStoreIndex, ServiceContext
 from llama_index.vector_stores import PineconeVectorStore
 
 from llama_index import (
@@ -16,6 +16,7 @@ from llama_index.postprocessor import SimilarityPostprocessor,KeywordNodePostpro
 from llama_index.prompts import PromptTemplate
 
 import time
+
 
 # 1. Key값 설정
 os.environ["OPENAI_API_KEY"] = get_openai_key()
@@ -37,7 +38,7 @@ retriever = VectorIndexRetriever(
 )
 
 ## 3.2 Configuring node postprocessors
-node_postprocessors = [SimilarityPostprocessor(similarity_cutoff=0.5)]
+node_postprocessors = [SimilarityPostprocessor(similarity_cutoff=0.2)]
 
 ## 3.3 configure response synthesizer
 #response_synthesizer = get_response_synthesizer(response_mode="tree_summarize",) #(streaming = True, response_mode="tree_summarize",)
@@ -63,8 +64,7 @@ qa_prompt_tmpl_str = (
     "{context_str}\n"
     "---------------------\n"
     "Given the context information and not prior knowledge, "
-    "answer the query in the style of a Shakespeare play.\n"
-    "Use Korean"
+    "answer the query in the style of a Shakespeare play and only in Korean.\n"
     "Query: {query_str}\n"
     "Answer: "
 )
@@ -74,9 +74,13 @@ query_engine.update_prompts(
     {"response_synthesizer:text_qa_template": qa_prompt_tmpl}
 )
 
-import time
 
-def my_chatbot(text_input):
+
+# 5. chat
+while True:
+    text_input = input("User: ")
+    if text_input.lower() == "exit":
+        break
     start_time = time.time()
     response = query_engine.query(text_input)
     response_time = time.time() - start_time
@@ -84,6 +88,4 @@ def my_chatbot(text_input):
     print("Response Time: {:.2f} seconds".format(response_time))
     print("Response:", response.response) # print("Response:", response.response) 이렇게 하면 에러 발생 ..
     # print("Metadata:", response.metadata.values())
-
-# Example usage
-my_chatbot("안녕?")
+    

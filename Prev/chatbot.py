@@ -16,6 +16,7 @@ os.environ["OPENAI_API_KEY"] = get_openai_key()
 os.environ["PINECONE_API_KEY"] = get_pinecone_key()
 
 index_name = "openai"
+environment = get_pinecone_env()
 #pinecone.init(api_key = get_pinecone_key(), environment = get_pinecone_env())
 
 # Pinecone DB에 Index를 연결
