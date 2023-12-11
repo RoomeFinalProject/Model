@@ -126,6 +126,7 @@ def get_qa_by_GPT(prompt):
 app = FastAPI()
 app.mount("/imgs", StaticFiles(directory="imgs"), name='images')
 
+
 # /chat
 @app.post('/chat')
 async def chat(request:Request):
