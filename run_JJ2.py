@@ -216,7 +216,7 @@ def responseai_per_request(parameter, response_queue, filename, domain):
         # 질문에서 @qa 제외 => 프럼프트 구성
         prompt = user_question.replace('@qa','').strip()
         # GPT에게 질의 -> 블락(응답 지연후 발생) -> 응답
-        gpt_answer = get_qa_by_gpt(prompt)
+        gpt_answer = get_qa_by_GPT(prompt)
         # Queue에 응답을 넣는다.
         response_queue.put(text_response_json_format(gpt_answer))
         # 로그 기록

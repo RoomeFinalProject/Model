@@ -82,6 +82,7 @@ def my_chatbot(text_input):
     response_time = time.time() - start_time
     
     print("Response Time: {:.2f} seconds".format(response_time))
+    print("Response:", str(response.response)) # print("Response:", response.response) 이렇게 하면 에러 발생 ..
     print("Response:", response.response) # print("Response:", response.response) 이렇게 하면 에러 발생 ..
     # print("Metadata:", response.metadata.values())
 
