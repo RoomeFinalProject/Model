@@ -86,4 +86,4 @@ def my_chatbot(text_input):
     # print("Metadata:", response.metadata.values())
 
 # Example usage
-my_chatbot("안녕?")
+#my_chatbot("안녕?")
