@@ -79,10 +79,12 @@ def my_chatbot(text_input):
     response_time = time.time() - start_time
     
     print("Response Time: {:.2f} seconds".format(response_time))
+    print("Response:", str(response.response)) # print("Response:", response.response) 이렇게 하면 에러 발생 ..
     print("Response:", response.response) # print("Response:", response.response) 이렇게 하면 에러 발생 ..
     # print("Metadata:", response.metadata.values())
     return (response.response)
 
+<<<<<<< HEAD
 if __name__ == "__main__":
     # This block will be executed only if the script is run as the main program
     while True:
@@ -92,3 +94,7 @@ if __name__ == "__main__":
         my_chatbot(text_input)
 # # Example usage
 # my_chatbot("안녕?")
+=======
+# Example usage
+#my_chatbot("안녕?")
+>>>>>>> 0f6fdd6aef9dc758c1ceeed240ff078afb228fbd

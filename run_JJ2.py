@@ -136,7 +136,11 @@ app.mount("/imgs", StaticFiles(directory="imgs"), name='images')
 # -> 결과를 요청 (GPT X, 결과가 덤프 되었으면 전송, 아니면 다시 대기))
 
 # /chat
+<<<<<<< HEAD
 @app.post('/chat')
+=======
+@app.post('/chat/')
+>>>>>>> 0f6fdd6aef9dc758c1ceeed240ff078afb228fbd
 async def chat(request:Request):
     # post로 전송한 데이터 획득 : http 관점 (기반 TCP/IP) => 헤더 전송 이후 바디 전송
     kakao_message = await request.json() # 클라이언트 (카카오톡에서 json 형태로 전송)의 메시지

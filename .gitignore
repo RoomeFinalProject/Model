@@ -1,5 +1,9 @@
 venv_chatbot
 access_key.json
+<<<<<<< HEAD
 data
 venv
 venv4
+=======
+#data
+>>>>>>> 0f6fdd6aef9dc758c1ceeed240ff078afb228fbd
